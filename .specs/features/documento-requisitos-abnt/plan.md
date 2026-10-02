@@ -32,7 +32,8 @@ them, not a second spec.
 4. Microsoft Word (exists, driven through PowerShell COM) - updates the TOC and page fields,
    saves the `.docx`, exports the `.pdf`
 5. out: `docs/requisitos/One_Levantamento_e_Requisitos.docx` and `.pdf`; `test_documento.py`
-   (new) reads them and `requirements.md`; `.claude/scripts/verify.ps1` (exists, door 4) runs it
+   (new) reads them and `requirements.md`; `.claude/scripts/verify.ps1` (exists, door 4) is meant
+   to run it - pending, the file is outside what the agent may edit
 
 ## Impact
 
