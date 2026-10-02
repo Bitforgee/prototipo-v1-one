@@ -27,7 +27,7 @@ them, not a second spec.
 1. in (each exists): `requirements.md`, `One_MVP_Visao_Produto.md`, `One_Pesquisa_Mercado_Helpdesks.md`,
    the PEI manual -> Portuguese content written into `docs/requisitos/conteudo.md` (new, no door - placement)
 2. `docs/requisitos/diagramas/*.puml` (new) -> PlantUML (door 1) renders one PNG per diagram
-3. `docs/requisitos/gerar.py` (new, door 2) - reads the content, the cover metadata and the PNGs,
+3. `docs/requisitos/gerar.py` (new, door 2) - reads the content, the cover metadata, the UNIVAG logo and the PNGs,
    writes the `.docx` with ABNT page setup, capa, folha de rosto, TOC field and numbered sections
 4. Microsoft Word (exists, driven through PowerShell COM) - updates the TOC and page fields,
    saves the `.docx`, exports the `.pdf`
@@ -87,6 +87,7 @@ One command produces a `.docx` and a `.pdf` that meet §4.1–§4.2 of the manua
 9. The resumo SHALL have at most 250 words and be followed by a line starting "Palavras-chave:" with 3 to 5 terms
 10. The sumário SHALL be a Word TOC field over heading levels 1 to 3, and the `.pdf` sumário page SHALL list "INTRODUÇÃO" with a page number
 11. The document SHALL number headings progressively (1, 1.1, 1.1.1) with level-1 headings in bold uppercase
+35. The capa SHALL show the UNIVAG logo, taken from the PEI manual, centred above "UNIVAG - CENTRO UNIVERSITÁRIO" (added at the user's request, 2026-10-02)
 
 **Independent test:** open the `.pdf`: cover, title page, abstract, table of contents, then page numbers starting at the introduction.
 
@@ -152,7 +153,7 @@ Every illustration and table follows ABNT and is rebuilt from a versioned source
 | Open questions Q5–Q19 | The spec's default for each; Q14 and Q15, which have none, become "não modelado no MVP" and "requisito de retenção pendente" | Roadmap rule for PEI deadlines; 20–21/10 comes before the coordination's answers | n |
 | Capa order | ABNT NBR 14724 order: instituição, curso, autores, título, subtítulo, local, ano | §4.1 lists the elements without an order | n |
 | Ticket term | "chamado" throughout; "solicitação" only where the text describes what the student sees | The Glossary gives both words for one concept | n |
-| Tone | Impersonal third person, formal academic Portuguese | ABNT academic convention | n |
+| Tone | First person plural for what the group did, plain academic Portuguese, foreign terms in italics, no AI-writing patterns | The user asked for a text that reads as written by the group, not by an AI (2026-10-02) | y |
 | Data model notation | Conceptual in Chen notation; logical as tables with primary and foreign keys | Usual in Brazilian database courses | n |
 | Output files | `.docx`, `.pdf` and the PNGs are committed next to their sources | Group members can post the file without running Java or Word | n |
 | Page limit | None enforced | The 20-page limit of §2.8 applies to the project proposal, not to this document | n |
@@ -165,7 +166,7 @@ Every illustration and table follows ABNT and is rebuilt from a versioned source
 | --- | --- | --- |
 | document `One_Levantamento_e_Requisitos` | structure | AC 12, 13, 14, 15 |
 | document | formatting | AC 3, 4, 5, 6, 11 |
-| document | tone | assumption - impersonal third person (Assumptions, Tone) |
+| document | tone | assumption - first person plural, no AI-writing patterns (Assumptions, Tone) |
 | document | depth | AC 16, 19, 21, 25 |
 | document | what the reader does next | AC 28 |
 | document | figures and tables | AC 29, 30 |

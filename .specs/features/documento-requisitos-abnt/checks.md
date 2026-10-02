@@ -16,9 +16,10 @@ Every `-k` proof runs as
 Proof: `python docs/requisitos/gerar.py`
 Proof: `-k test_saidas_existem`
 
-**C2** - With Java missing, or with Word missing, the generator exits 1, prints the missing tool's name and leaves the previous `.docx` and `.pdf` byte-identical (AC 2) · closed
+**C2** - With Java missing, or with Word missing, the generator exits 1, prints the missing tool's name and leaves the previous `.docx` and `.pdf` byte-identical; a step failing after both tools were found also exits 1 and leaves them byte-identical (AC 2, Observable "failure halfway") · closed
 Proof: `-k test_sem_java_sai_1`
 Proof: `-k test_sem_word_sai_1`
+Proof: `-k test_falha_no_meio_sai_1`
 
 **C3** - Every section is A4 (21 × 29.7 cm) with margins top 3 cm, left 3 cm, bottom 2 cm, right 2 cm (AC 3) · closed
 Proof: `-k test_margens_a4`
@@ -32,8 +33,11 @@ Proof: `-k test_espacamento`
 **C6** - Capa, folha de rosto, resumo and sumário carry no PAGE field; the section holding the folha de rosto restarts numbering at 1; the first textual section shows a right-aligned PAGE field in its header and does not restart (AC 6) · closed
 Proof: `-k test_paginacao`
 
-**C7** - The capa contains, in order, "UNIVAG - CENTRO UNIVERSITÁRIO", "CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS", the five authors, the title, the subtitle, "Várzea Grande - MT" and "2026", all centred (AC 7) · closed
+**C7** - The capa contains, in order, "UNIVAG - CENTRO UNIVERSITÁRIO", "CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS", the five authors, the title, the subtitle, "Várzea Grande - MT" and "2026", with exactly this letter case, all centred (AC 7) · closed
 Proof: `-k test_capa`
+
+**C37** - The capa carries exactly one picture, centred and placed before "UNIVAG - CENTRO UNIVERSITÁRIO", whose bytes equal `docs/requisitos/logo_univag.png` (AC 35) · closed
+Proof: `-k test_logo_na_capa`
 
 **C8** - The folha de rosto contains the literal §4.1 nature text and the orientador line with "Walderson Ryutti Shimokawa" (AC 8) · closed
 Proof: `-k test_folha_de_rosto`
@@ -108,7 +112,7 @@ Proof: `-k test_consideracoes_finais`
 
 ### S3 - Figures, tables and references · 5 files · ~25 KB · ~6k
 
-**C29** - The document has exactly four inline pictures; each is preceded by a caption "Figura N – <título>" (N = 1..4, in order, for casos de uso, classes, conceitual, lógico) and followed by "Fonte: elaborado pelos autores (2026)." (AC 29) · closed
+**C29** - The textual part (from INTRODUÇÃO on) has exactly four inline pictures; each is preceded by a caption "Figura N – <título>" (N = 1..4, in order, for casos de uso, classes, conceitual, lógico) and followed by "Fonte: elaborado pelos autores (2026)." (AC 29) · closed
 Proof: `-k test_figuras`
 
 **C30** - Every table except the capa layout is preceded by "Quadro N – <título>" with N running 1, 2, 3… and followed by a paragraph starting "Fonte:" (AC 30) · closed
@@ -137,7 +141,7 @@ Proof: `-k test_referencias_ordem`
 | VISÃO GERAL subsections (4) | C14, table-driven over all 4 | - |
 | DOCUMENTAÇÃO subsections (5) | C15, table-driven over all 5 | - |
 | figures (4) | `casos de uso` C29 · `classes` C29 · `conceitual` C29 · `lógico` C29 | - |
-| generator exits (3) | `0` C1 · `1 sem Java` C2 · `1 sem Word` C2 | - |
+| generator exits (4) | `0` C1 · `1 sem Java` C2 · `1 sem Word` C2 · `1 falha no meio` C2 | - |
 | unnumbered pre-textual pages (4) | `capa` C6 · `folha de rosto` C6 · `resumo` C6 · `sumário` C6 | - |
 | baseline values (11) | C16, table-driven over the 11 values | - |
 | unconfirmed figures (2) | `5 h / 3 h` C17 · `83 e-mails` C17 | - |
@@ -166,3 +170,4 @@ Proof: `-k test_referencias_ordem`
 - **Boundary:** C1-C34 and C36 closed at the `feat(requisitos)` commit; C35 open - editing `.claude/scripts/verify.ps1` is denied by the user's permission settings
 - **Settled mid-build:** Word drops direct formatting equal to the style's (Normal rFonts, capa `jc`), so C4 and C7 read the effective value (paragraph, style chain, docDefaults) instead of only direct formatting - the claims are unchanged; the class diagram's enums moved to Quadro 25 and the logical model uses `left to right direction`, both for legibility at 16 cm
 - **Abandoned:** enumerations drawn inside the class diagram - they tripled its width and made the text unreadable on A4
+- **Settled mid-build (round 2):** the user asked for the UNIVAG logo on the capa (AC 35, C37; C29 now counts pictures in the textual part only) and for a revised text that reads as written by the group (Tone assumption); verifier gaps 2 and 3 closed by `test_falha_no_meio_sai_1` and an exact-case C7

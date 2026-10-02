@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 4,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "spec_precision_gap::prove a failure halfway with a fault injected after the preconditions pass not only at the precondition check",
+      "text": "Prove a failure halfway with a fault injected after the preconditions pass, not only at the precondition check",
+      "signal": "spec_precision_gap",
+      "scope": "generators",
+      "status": "candidate",
+      "features": [
+        "documento-requisitos-abnt"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "verification.md gap 2 - gerar.py:412-427 untested (generators)"
+      ],
+      "created": "2026-10-02T21:36:56Z",
+      "last_seen": "2026-10-02T21:36:56Z"
+    },
+    {
+      "id": "L-002",
+      "key": "spec_precision_gap::compare case sensitively when the check fixes the letter case of the text",
+      "text": "Compare case-sensitively when the check fixes the letter case of the text",
+      "signal": "spec_precision_gap",
+      "scope": "documents",
+      "status": "candidate",
+      "features": [
+        "documento-requisitos-abnt"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "verification.md gap 3 - test_documento.py:300 casefold (documents)"
+      ],
+      "created": "2026-10-02T21:36:56Z",
+      "last_seen": "2026-10-02T21:36:56Z"
+    },
+    {
+      "id": "L-003",
+      "key": "ac_gap::confirm the agent may edit a file before making a check depend on changing it",
+      "text": "Confirm the agent may edit a file before making a check depend on changing it",
+      "signal": "ac_gap",
+      "scope": "harness",
+      "status": "candidate",
+      "features": [
+        "documento-requisitos-abnt"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "verification.md C35 - verify.ps1:54-58 empty (harness)"
+      ],
+      "created": "2026-10-02T21:36:56Z",
+      "last_seen": "2026-10-02T21:36:56Z"
+    }
+  ]
+}
