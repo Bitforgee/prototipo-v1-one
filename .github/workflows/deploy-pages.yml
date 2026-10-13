@@ -1,0 +1,53 @@
+name: Deploy GitHub Pages (prototipo-visual)
+
+# Publica APENAS a pasta prototipo-visual/ no GitHub Pages.
+# A documentação, requisitos e demais arquivos permanecem no repositório,
+# mas NÃO são publicados como páginas do site.
+#
+# Dispara automaticamente a cada push na branch main que altere o protótipo
+# (ou este workflow), e também pode ser executado manualmente.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "prototipo-visual/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+# Permissões mínimas exigidas pelo deploy oficial do GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante uma publicação por vez; não cancela um deploy em andamento.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar artefato (somente prototipo-visual/)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: prototipo-visual
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
