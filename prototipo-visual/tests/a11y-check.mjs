@@ -49,7 +49,7 @@ const AUDIT = `
 `;
 
 const rotas = [
-  { nome: "Landing", url: `${BASE}#/` },
+  { nome: "Raiz (#/ → login)", url: `${BASE}#/` },
   { nome: "Login", url: `${BASE}#/login` },
   { nome: "Aluno — Novo atendimento", url: `${BASE}?demo-role=aluno#/aluno/novo` },
   { nome: "Aluno — Assistente", url: `${BASE}?demo-role=aluno#/aluno/assistente` },

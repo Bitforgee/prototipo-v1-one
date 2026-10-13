@@ -14,9 +14,11 @@ import * as router from "./router.js";
 import { getSession, isAuthenticated, getRole, logout } from "./state.js";
 import { HOME_ROUTE_BY_ROLE, ROLES } from "./nav-config.js";
 
-import { renderLanding } from "./pages/landing.js";
+// A landing (js/pages/landing.js) foi removida da navegação pública, mas o
+// arquivo é mantido para manutenção. A rota "#/" apenas redireciona agora.
 import { renderLogin } from "./pages/login.js";
-import { renderDesignSystemPage } from "./pages/design-system.js";
+// A página do Design System (js/pages/design-system.js) permanece em disco para
+// manutenção interna; a rota "#/design-system" apenas redireciona agora.
 import { renderStudentHome, renderAgentHome, renderAdminHome } from "./pages/dashboards.js";
 import { renderNotFound, renderForbidden } from "./pages/errors.js";
 import { renderKnowledge } from "./pages/knowledge.js";
@@ -146,7 +148,7 @@ function wireGlobalActions() {
       ticketService.resetar();
       resetarArtigos();
       showToast("Dados demonstrativos restaurados.", { variant: "success" });
-      router.navigate(HOME_ROUTE_BY_ROLE[getRole()] || "#/");
+      router.navigate(HOME_ROUTE_BY_ROLE[getRole()] || "#/login");
     }
   });
 }
@@ -173,14 +175,20 @@ function accessGuard(route) {
 function registerRoutes() {
   router.setGuard(accessGuard);
 
-  // Público: landing.
+  // Raiz: a landing foi removida da navegação pública (mantida em disco para
+  // manutenção). A rota permanece registrada, mas apenas redireciona: usuários
+  // autenticados vão ao painel do seu perfil; os demais, para o login.
+  // router.navigate re-renderiza (sem novo hash) quando o destino é o atual,
+  // então não há risco de loop ao chegar em #/login.
   router.register("#/", {
     title: "One",
     roles: [],
     render: () => {
-      const host = ensureFullscreen();
-      renderLanding(host);
-      focusMainRegion();
+      if (isAuthenticated()) {
+        router.navigate(HOME_ROUTE_BY_ROLE[getRole()] || "#/login");
+      } else {
+        router.navigate("#/login");
+      }
     },
   });
 
@@ -199,14 +207,20 @@ function registerRoutes() {
     },
   });
 
-  // Design System (todos os perfis autenticados).
+  // Design System: removido da navegação pública (a página segue em
+  // js/pages/design-system.js para manutenção interna). A rota continua
+  // registrada para não gerar 404 em links antigos, mas apenas redireciona:
+  // autenticados vão ao painel do perfil; os demais, para o login.
   router.register("#/design-system", {
-    roles: ["aluno", "atendente", "admin"],
-    render: () => shellPage(
-      { title: "Design System", breadcrumb: [{ label: "One" }, { label: "Design System" }], activeId: "design-system" },
-      (host) => renderDesignSystemPage(host)
-    ),
-    onForbidden: () => renderForbiddenInShell(),
+    title: "One",
+    roles: [],
+    render: () => {
+      if (isAuthenticated()) {
+        router.navigate(HOME_ROUTE_BY_ROLE[getRole()] || "#/login");
+      } else {
+        router.navigate("#/login");
+      }
+    },
   });
 
   // Painel do Aluno.
@@ -408,12 +422,12 @@ function registerRoutes() {
     if (isAuthenticated()) {
       const refs = ensureShell();
       paintShellChrome({ title: "Não encontrado", breadcrumb: [{ label: "Erro" }], activeId: null });
-      renderNotFound(refs.content, { home: HOME_ROUTE_BY_ROLE[getRole()] || "#/" });
+      renderNotFound(refs.content, { home: HOME_ROUTE_BY_ROLE[getRole()] || "#/login" });
       focusMainRegion();
     } else {
       const host = ensureFullscreen();
       host.classList.add("one-error-fullscreen");
-      renderNotFound(host, { home: "#/" });
+      renderNotFound(host, { home: "#/login" });
       focusMainRegion();
     }
   });
@@ -431,7 +445,7 @@ function renderForbiddenInShell() {
   const refs = ensureShell();
   const roleLabel = (ROLES[getRole()] || {}).label;
   paintShellChrome({ title: "Acesso negado", breadcrumb: [{ label: "Erro" }], activeId: null });
-  renderForbidden(refs.content, { home: HOME_ROUTE_BY_ROLE[getRole()] || "#/", roleLabel });
+  renderForbidden(refs.content, { home: HOME_ROUTE_BY_ROLE[getRole()] || "#/login", roleLabel });
   focusMainRegion();
 }
 

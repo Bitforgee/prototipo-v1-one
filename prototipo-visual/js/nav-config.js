@@ -105,7 +105,11 @@ export const HOME_ROUTE_BY_ROLE = {
   admin: "#/admin",
 };
 
-/** Item fixo exibido no rodapé da sidebar para todos os perfis (Fase 1 ok). */
-export const SYSTEM_ITEMS = [
-  { id: "design-system", label: "Design System", icon: "bi-palette", route: "#/design-system", phase2: false },
-];
+/**
+ * Itens fixos do rodapé da sidebar (grupo "Sistema"), exibidos em todos os
+ * perfis. O "Design System" foi removido da navegação pública; a página e os
+ * tokens/componentes do design system continuam existindo para manutenção
+ * interna. Como a lista está vazia, a sidebar não renderiza o grupo "Sistema".
+ * @type {import("./nav-config.js").NavItem[]}
+ */
+export const SYSTEM_ITEMS = [];

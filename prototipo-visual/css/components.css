@@ -88,14 +88,67 @@
 }
 
 /* --- Sidebar recolhida: só ícones centralizados --------------------------- */
+/* Quando recolhida (~68px), a sidebar mostra apenas ícones centralizados, com
+   alvos de clique confortáveis, sem textos cortados nem estouro horizontal.
+   As regras usam .one-sidebar.is-collapsed, que só a aside do desktop recebe
+   (o Offcanvas do mobile nunca é marcado como recolhido). */
+
+/* Nada pode ultrapassar a largura da sidebar recolhida. */
+.one-sidebar.is-collapsed {
+  overflow-x: hidden;
+}
+
+/* Oculta rótulos de links, títulos de seção e os textos/ações do bloco de
+   usuário (restando só o avatar). display:none não reserva espaço. */
 .one-sidebar.is-collapsed .one-sidebar__link-label,
 .one-sidebar.is-collapsed .one-sidebar__section,
 .one-sidebar.is-collapsed .one-sidebar__user > *:not(.one-avatar) {
   display: none;
 }
+
+/* Links: ícone centralizado e alvo de toque acessível (>=40px). */
 .one-sidebar.is-collapsed .one-sidebar__link {
   justify-content: center;
   gap: 0;
+  min-height: 40px;
+  padding-inline: var(--one-space-2);
+}
+
+/* Lista de navegação com respiro lateral menor, mantendo os ícones alinhados
+   ao centro da coluna estreita. */
+.one-sidebar.is-collapsed .one-sidebar__nav {
+  padding-inline: var(--one-space-2);
+}
+
+/* Marca: centraliza o símbolo "O" e esconde o logotipo textual "One". */
+.one-sidebar.is-collapsed .one-sidebar__brand {
+  justify-content: center;
+  gap: 0;
+  padding-inline: var(--one-space-2);
+}
+.one-sidebar.is-collapsed .one-sidebar__brand .one-logo {
+  display: none;
+}
+
+/* Bloco de usuário: avatar centralizado, sem reservar espaço para os textos. */
+.one-sidebar.is-collapsed .one-sidebar__user {
+  justify-content: center;
+  gap: 0;
+  padding-inline: var(--one-space-2);
+}
+
+/* Divisores acompanham a largura menor. */
+.one-sidebar.is-collapsed .one-sidebar__divider {
+  margin-inline: var(--one-space-2);
+}
+
+/* Botão de recolher/expandir: centralizado, alvo >=40px, mantido no fluxo
+   (segue focável e navegável por teclado). */
+.one-sidebar.is-collapsed .one-sidebar__collapse {
+  margin-inline: var(--one-space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* --- Sidebar: usuário ----------------------------------------------------- */

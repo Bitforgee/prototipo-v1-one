@@ -87,7 +87,7 @@
 
   /* --- Layout ------------------------------------------------------------- */
   --one-sidebar-width:   248px;
-  --one-sidebar-collapsed: 60px; /* ícones-only reais na sidebar recolhida */
+  --one-sidebar-collapsed: 68px; /* ícones-only reais na sidebar recolhida (alvo 64–72px) */
   --one-header-height:   56px;   /* header compacto (alvo 56–64px) */
   --one-content-max:     1360px; /* referenciável; não é mais aplicado globalmente */
   --one-content-readable: 820px; /* largura de leitura confortável (formulário/chat) */

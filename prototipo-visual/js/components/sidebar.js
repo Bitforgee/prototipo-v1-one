@@ -190,8 +190,11 @@ export function buildSidebarContent({ role, user, activeId, onNavigate }) {
 
   frag.append(el("div", { class: "one-sidebar__spacer" }));
 
-  // Itens de sistema (ex.: Design System) disponíveis em todos os perfis.
-  frag.append(navGroup({ title: "Sistema", items: SYSTEM_ITEMS }, activeId, onNavigate, true));
+  // Grupo "Sistema" (itens globais do rodapé). Só é renderizado quando há itens;
+  // vazio, não deixa divisor/título/lista órfãos na sidebar.
+  if (SYSTEM_ITEMS.length) {
+    frag.append(navGroup({ title: "Sistema", items: SYSTEM_ITEMS }, activeId, onNavigate, true));
+  }
 
   frag.append(userBlock(user));
   frag.append(collapseButton());

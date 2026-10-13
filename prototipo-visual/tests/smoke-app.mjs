@@ -29,9 +29,13 @@ function dumpDom(url) {
 // Cada cenário: url (hash + query), e os marcadores que devem/não devem existir.
 const scenarios = [
   {
-    name: "Landing (público)",
+    // A landing foi removida da navegação pública: a raiz "#/" agora redireciona
+    // para o login. Mantemos uma asserção positiva de que a raiz resolve na tela
+    // de seleção de perfis (login), com os mesmos marcadores do cenário de login.
+    name: "Raiz (#/) redireciona para o login",
     url: `${BASE}#/`,
-    expect: [/one-landing/, /O aluno não precisa saber quem resolve/, /Como funciona/],
+    expect: [/one-login/, /Escolha um perfil para entrar/, /Administrador/],
+    reject: [/one-landing/],
   },
   {
     name: "Login (público)",
