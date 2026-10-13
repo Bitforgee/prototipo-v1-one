@@ -6,6 +6,20 @@ tenta se autoatender pela base de conhecimento/assistente e, se não resolver, a
 conversa vira uma **solicitação rastreável** que chega ao setor certo, é tratada
 por um atendente humano e é **medida** por indicadores.
 
+## Acesse o protótipo online
+
+🚀 **[CLIQUE AQUI PARA ACESSAR O ONE — PROTÓTIPO V1](https://bitforgee.github.io/prototipo-v1-one/)**
+
+O protótipo está publicado no GitHub Pages e funciona em **computadores,
+tablets e smartphones**, direto no navegador, sem instalar nada. O endereço
+principal abre diretamente a **seleção de perfis**, com três perfis
+demonstrativos: **Aluno**, **Atendente** e **Administrador**.
+
+> ⚠️ **Sistema demonstrativo.** Todos os dados são **simulados no navegador**
+> (sem backend). O login apenas seleciona um perfil — **não é autenticação
+> real** e não constitui segurança. Limpar os dados do navegador reinicia o
+> protótipo.
+
 > **Natureza do artefato.** Este repositório contém a documentação do projeto
 > (requisitos, diagramas, planejamento) **e** um **protótipo visual navegável**
 > de alta fidelidade em `prototipo-visual/`. O protótipo é **frontend-only**,
@@ -98,9 +112,9 @@ node tests/static-server.mjs 4178      # ou: py -m http.server 4178
 # abra http://localhost:4178
 ```
 
-Clique em **Acessar** e escolha um perfil (Aluno, Atendente ou Administrador).
-Para restaurar os dados demonstrativos: menu do usuário → **Restaurar dados
-demonstrativos**. Parâmetros opcionais de demonstração: `?theme=dark|light` e
+A página inicial abre **diretamente a seleção de perfis** — escolha um perfil
+(Aluno, Atendente ou Administrador) para entrar. Para restaurar os dados
+demonstrativos: menu do usuário → **Restaurar dados demonstrativos**. Parâmetros opcionais de demonstração: `?theme=dark|light` e
 `?demo-role=aluno|atendente|admin`.
 
 ## Como testar
@@ -154,8 +168,8 @@ não commitar caches/binários gerados (`**/.cache/` já ignorado); preferir
 ### Clonar e sincronizar
 
 ```powershell
-git clone <url-do-repositorio>
-cd <pasta-do-repositorio>
+git clone https://github.com/Bitforgee/prototipo-v1-one.git
+cd prototipo-v1-one
 # abra no Kiro ou VS Code
 
 # no dia a dia:
