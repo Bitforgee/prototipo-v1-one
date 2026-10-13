@@ -1,0 +1,18 @@
+{
+    "mcpServers":  {
+                       "drawio":  {
+                                      "command":  "npx",
+                                      "args":  [
+                                                   "-y",
+                                                   "@drawio/mcp@1.6.1"
+                                               ]
+                                  },
+                       "mermaid":  {
+                                       "command":  "npx",
+                                       "args":  [
+                                                    "-y",
+                                                    "mcp-mermaid@0.4.1"
+                                                ]
+                                   }
+                   }
+}

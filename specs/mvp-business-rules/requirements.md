@@ -35,6 +35,36 @@ de Sistemas).
 | E1.5 | The official channel was WhatsApp and has been changed to e-mail. | Stated |
 | E1.6 | She keeps a demand funnel (types and volumes of demands). | Seen; contents not yet captured `[Q16]` |
 | E1.7 | Main demands named: (a) boleto for the current semester; (b) atestado de escolaridade. Both — and other services — are already self-service in the Univag Portal do Aluno. | Stated; per-type volumes not captured `[Q16]` |
+
+#### E1 follow-up (2026-10-01)
+
+Answers to sections 1–2 of `One_Roteiro_Entrevista_Coordenacao_2026-10-01.md`. Sections 3–7
+were not covered.
+
+| # | Finding | Status |
+|---|---|---|
+| E1.8 | In the last 7 days about 171 student messages arrived on WhatsApp, 70 by e-mail and 15 on the AVA (≈ 256; WhatsApp ≈ 67%), although the official channel is now e-mail (E1.5). The unit is messages, not demands. | Stated, approximate |
+| E1.9 | About 50% of the messages are real demands and about 30% are trivial questions or a bare greeting ("Olá", "Bom dia"). | Stated; the remaining ~20% and the share the portal would solve not captured `[Q17]` |
+| E1.10 | She spends 5 h on student service and 3 h on internal work. | Stated; unit (week or day) not confirmed `[Q17]`. Per week conflicts with E1.11 (128 real-demand messages × ≥ 10 min ≈ 21 h, if each were one demand); per day gives 25 h + 15 h = 40 h/week, matching E1.3 |
+| E1.11 | Handling time: easy ~10 min, medium ~30 min, heavy ~1 h. She takes one request from start to finish while the others wait. Most of the time goes to finding the student's data (course, semester, etc.), which slows even trivial answers such as "what is my institutional e-mail". | Stated; the student's waiting time until a reply not captured `[Q17]` |
+| E1.12 | One course alone has 83 e-mails "no geral". | Stated; period unknown; the 2-week e-mail count was not given |
+| E1.13 | Demand types and who resolves them today: table below. Not exhaustive ("e etc."). | Stated; per-type volumes not captured `[Q16]` |
+
+| Demand | When | Who resolves today |
+|---|---|---|
+| Boleto; atestado de escolaridade | — | Portal do Aluno (E1.7) |
+| Institutional e-mail | — | Class representative |
+| Study plan not accepted; student decides not to take a subject | Start of semester | Coordination |
+| Student missing from the attendance list | Exam period | Coordination |
+| Complementary activities (atividades complementares) | — | Coordinator |
+| Absences: justification or medical certificate | All semester | No one: by the Estatuto do Aluno nothing waives an absence |
+| Internship (estágio) and TCC | — | Professor |
+| Direct demands to a professor that reach the coordination | — | Professor |
+| Complaints about teaching methodology | — | Professor |
+| Wrong grade posted | — | Professor |
+| Room location | — | Follows the class timetable; resolver not stated |
+| Financial, payments; personal documents | — | CAE |
+
 Implications for this spec:
 
 - **Institutional traceability is a compliance need, not only a convenience (E1.2).** Section H
@@ -44,12 +74,25 @@ Implications for this spec:
   the number of demands that reach her and the time she spends on them.
 - **One competes with an existing filter, the class representatives (E1.4).** Ignoring them
   would either bypass the filter the coordination created or duplicate it. See Q14.
-- **The current official channel is e-mail (E1.5).** It is the baseline One must beat, and it is
-  also the channel students already watch (consistent with D2).
+- **The current official channel is e-mail (E1.5).** It is part of the baseline One must beat
+  (WhatsApp is the larger part, E1.8), and it is also the channel students already watch
+  (consistent with D2).
 - **The top demands are already solvable by the student (E1.7).** The gap is not the service
   but knowing where it is. These are the first knowledge base articles (pointing to the Portal
   do Aluno) and the clearest test of self-resolution (AC1). Why students still ask the
   coordinator instead of using the portal is not yet known.
+- **Demand does reach the coordinator (E1.8–E1.11).** About 256 messages a week against the
+  team's guess of ~60; the coordination stays the primary audience.
+- **Most of the volume is on WhatsApp, which stays out of scope (E1.8).** The pilot's
+  off-system count (BR-I1) must include WhatsApp, or a drop in e-mail would hide a move
+  between channels.
+- **Student context is where her time goes (E1.11).** BR-D2 already puts the student's course
+  on the ticket; the semester is not in the model. See Q19.
+- **"The professor" is a frequent destination the routing model cannot express (E1.13).**
+  BR-E2 routes to a fixed sector or the course coordination only. See Q18.
+- **Some demands have one fixed answer (E1.13).** Absences (Estatuto do Aluno rule) join boleto
+  and atestado as first-article candidates; institutional e-mail and room location depend on
+  where that information is published, which is not yet known.
 
 ## Precondition: pilot data comes from Discovery
 
@@ -295,6 +338,8 @@ Each has a proposed default; nothing tagged with it should be designed until it 
   (c) representatives only see/aggregate their class's tickets, without handling them.
   Needs: what representatives actually filter today and whether the coordinator wants to keep
   them in the loop. *Default:* none — decide after Q16.
+  *Partial (E1.13):* representatives resolve institutional e-mail questions. What they hold back
+  or pass on, and whether she wants to keep them, was not asked.
 - **Q15 — MEC requirement (from E1.2).** Which instrument/indicator requires the record, what
   must be kept (messages, responses, dates, who answered), for how long, and in what form it is
   shown to evaluators. This decides retention and whether a history report/export must leave
@@ -302,11 +347,22 @@ Each has a proposed default; nothing tagged with it should be designed until it 
 - **Q16 — Demand funnel (from E1.6).** Capture the funnel: demand types, weekly volume per type,
   who resolves each (representative / coordination / secretaria / other), and which ones only
   she can resolve. This becomes the category list, routing rules and the first articles.
-  *Partial (E1.7):* boleto of the current semester and atestado de escolaridade, both via
-  Portal do Aluno; volumes and the rest of the list still missing.
+  *Partial (E1.7, E1.13):* the main demand types and who resolves each today. Still missing:
+  weekly volume per type and the funnel document itself.
 - **Q17 — Baseline (from E1.3/E1.5).** How many demands reach the coordinator per week today, by
   e-mail and other channels, and how many hours she spends on them? Without this number the
   pilot cannot show improvement.
-  *Team guess, not evidence (not stated by the coordinator):* ~60/week, ~30% simple,
-  > 4 h/week, 1–3 days to answer. Use only to prepare the interview; must be replaced by her
-  numbers or by a count of her e-mails.
+  *Answered (E1.8–E1.12):* ≈ 256 messages in 7 days (171 WhatsApp, 70 e-mail, 15 AVA), ~50%
+  real demands and ~30% trivial or greetings; 5 h on student service and 3 h on internal work;
+  ~10/30/60 min per easy/medium/heavy demand. To confirm: the unit of the hours (E1.10), what
+  the other ~20% are, the student's waiting time, and the period of the 83 e-mails (E1.12).
+- **Q18 — Professor as a destination (from E1.13).** Internship/TCC, methodology complaints,
+  wrong grades and direct demands to a professor are resolved by the professor, and some of them
+  pass through the coordination today. BR-E2 cannot route to a professor. Options:
+  (a) not routed — an article tells the student to contact the professor, and no ticket is
+  created for these types (they leave no record in One); (b) professors are agents of a
+  per-course "Professores" sector; (c) route to the professor of the student's subject — needs
+  class/subject data, which requires an out-of-scope integration. *Default:* (a) for the pilot.
+- **Q19 — Student data on the ticket (from E1.11).** Which student fields must the record hold
+  so the agent does not look them up (course, semester, class, institutional e-mail)? BR-A3
+  requires only the course. *Default:* course and semester, loaded by the admin bulk import (Q5).

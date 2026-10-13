@@ -101,7 +101,7 @@ Proof: `-k test_premissas`
 **C25** - Every use-case specification quadro has the fields Identificador, Atores, Pré-condições, Fluxo principal, Fluxos alternativos, Pós-condições and RFs relacionados, with an id matching `UC-\d{2}` (AC 25, door 3) · closed
 Proof: `-k test_especificacoes_uc`
 
-**C26** - The set of UC ids in `casos_de_uso.puml` equals the set of specification ids in the document; any difference fails and is named (AC 26) · closed
+**C26** - The set of UC ids in `casos_de_uso.drawio` equals the set of specification ids in the document; any difference fails and is named (AC 26) · closed
 Proof: `-k test_uc_diagrama_especificacao`
 
 **C27** - Every RF id is cited in some use case's "RFs relacionados"; an uncited id fails and is named (AC 27) · closed
@@ -118,10 +118,10 @@ Proof: `-k test_figuras`
 **C30** - Every table except the capa layout is preceded by "Quadro N – <título>" with N running 1, 2, 3… and followed by a paragraph starting "Fonte:" (AC 30) · closed
 Proof: `-k test_quadros`
 
-**C31** - Every figure referenced in `conteudo.md` has a `.puml` of the same stem in `docs/requisitos/diagramas/` (AC 31, door 1) · closed
-Proof: `-k test_figuras_tem_fonte_puml`
+**C31** - Every figure referenced in `conteudo.md` has exactly one `.mmd` or `.drawio` of the same stem in `docs/requisitos/diagramas/` (AC 31, door 1) · closed
+Proof: `-k test_figuras_tem_fonte`
 
-**C32** - Every entity in `modelo_conceitual.puml` has a table of the same normalised name in `modelo_logico.puml`; a missing one fails and is named (AC 32) · closed
+**C32** - Every entity in `modelo_conceitual.drawio` has a table of the same normalised name in `modelo_logico.mmd`; a missing one fails and is named (AC 32) · closed
 Proof: `-k test_modelo_conceitual_logico`
 
 **C33** - Every `(AUTOR, ano)` citation in the text has a REFERÊNCIAS entry starting with AUTOR and containing the year, and every entry is cited (AC 33) · closed

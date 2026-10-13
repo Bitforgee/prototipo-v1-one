@@ -1,3 +1,38 @@
 # Claude Code harness
 .harness-backup/
 .claude/state/
+
+# Claude Code harness
+**/.tlc/harness/state/
+
+# ==========================================================================
+# Repositório público — regras de segurança e higiene
+# (regras acima preservadas; estas foram acrescentadas para a publicação)
+# ==========================================================================
+
+# Segredos e variáveis de ambiente (nunca versionar)
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*_rsa
+*_rsa.pub
+secrets.json
+credentials.json
+
+# Caches de ferramentas e downloads gerados (ex.: drawio.exe, plantuml.jar)
+**/.cache/
+
+# Logs e temporários
+*.log
+*.tmp
+*.bak
+
+# Artefatos de SO / editor
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Artefatos internos dos agentes/workflows (notas de execução — não precisam ir ao público)
+**/.agents/
